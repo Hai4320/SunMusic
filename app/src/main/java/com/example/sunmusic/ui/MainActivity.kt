@@ -88,8 +88,10 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View,
 
     override fun onDestroy() {
         super.onDestroy()
-        val serviceIntent = Intent(this, MusicService::class.java)
-        stopService(serviceIntent)
+        Intent(this, MusicService::class.java).also{ intent ->
+            stopService(intent)
+        }
+
     }
 
     override fun onRequestPermissionsResult(
